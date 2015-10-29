@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="lakerscatApp">
+<head>
+	<title>AngularJS App</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	
+	<link rel="stylesheet" href="css/bootstrap.min.css" />			
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css" />		
+	<link rel="stylesheet" href="css/styles.css" />															
+</head>
+
+</head>
+<body ng-controller="lakersListCtrl">
+	<div class="container">
+		<div id="search_menu" class="col-md-12">
+			<div class="page-header">
+				<h1>Los Angeles Lakers Roster</h1>
+			</div>
+			<div class="col-md-3">
+				Search: <input ng-model="query">
+			</div>
+			<div class="col-md-3">
+				Sort by:
+				<select ng-model="order">
+					<option value="name">Alphabetical</option>
+					<option value="number">Number</option>
+					<option value="position">Position</option>
+					<option value="age">Age</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<tr>
+					<th>Number</th>
+					<th>Name</th>
+					<th>Position</th>
+					<th>Age</th>
+				</tr>
+				<tr ng-repeat="player in players | filter:query | orderBy:order">
+					<th>{{player.number}}</th>
+					<th>{{player.name}}</th> 
+					<th>{{player.position}}</th> 
+					<th>{{player.age}}</th> 
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/controllers.js"></script>
+</body>
+</html>
